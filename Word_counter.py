@@ -17,7 +17,7 @@ paragraphs = [p for p in text.split('\n\n') if p.strip()]
 paragraph_count = len(paragraphs)
 
 
-def count_words_in_file(txt_file):
+def count_words_in_file():
     
     word_count = defaultdict(int)
 
@@ -26,7 +26,7 @@ def count_words_in_file(txt_file):
     
     return dict(word_count)
 
-word_counts = count_words_in_file(f)
+word_counts = count_words_in_file()
 
 # count the number of sentences
 sentence_count = len(re.findall(r'[.!?]', text))
