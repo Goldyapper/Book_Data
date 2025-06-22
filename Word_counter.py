@@ -31,7 +31,10 @@ word_counts = count_words_in_file(f)
 # count the number of sentences
 sentence_count = len(re.findall(r'[.!?]', text))
 
-for word, count in word_counts.items():
+
+sorted_word_counts = sorted(word_counts.items(), key=lambda item: item[1])
+
+for word, count in sorted_word_counts:
     print(f"{word}: {count}")
 
 
