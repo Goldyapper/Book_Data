@@ -16,6 +16,15 @@ for i in Content_List:
     if i:
         paragraph_count += 1
 
+# count the number of sentences
+sentence_count = 0
+
+for char in text:
+    if char in ',!?':
+        sentence_count += 1
+
+
 print(f"Total number of paragraphs: {paragraph_count}")
+print(f"Total number of sentences: {sentence_count}")
 print(f"Total number of words: {word_count}")
 print(f"Total number of characters: {character_count}")
