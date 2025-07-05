@@ -7,7 +7,6 @@ def count_words_in_file():
 
     for word in re.findall(r'\b\w+\b', text.lower()):
         word_count[word] += 1
-    
     return dict(word_count)
 
 
@@ -31,9 +30,11 @@ word_counts = count_words_in_file()
 # count the number of sentences
 sentence_count = len(re.findall(r'[.!?]', text))
 
-sorted_word_counts = sorted(word_counts.items(), key=lambda item: item[1])
+sorted_word_counts = sorted(word_counts.items(), key=lambda item: item[1],reverse=True)
+top_20_words = sorted_word_counts[:20]
 
-for word, count in sorted_word_counts:
+
+for word, count in top_20_words:
     print(f"{word}: {count}")
 
 print(f"Total number of paragraphs: {paragraph_count}")
