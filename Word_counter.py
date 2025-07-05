@@ -31,7 +31,7 @@ word_counts = count_words_in_file()
 sentence_count = len(re.findall(r'[.!?]', text))
 
 sorted_word_counts = sorted(word_counts.items(), key=lambda item: item[1],reverse=True)
-top_20_words = sorted_word_counts[:20]
+top_20_words = sorted(sorted_word_counts[:20], key=lambda item: item[1])
 
 
 for word, count in top_20_words:
