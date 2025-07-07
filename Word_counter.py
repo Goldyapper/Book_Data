@@ -15,7 +15,7 @@ def count_words_in_file():
     
     word_count = defaultdict(int)
 
-    for word in re.findall(r'\b\w+\b', text.lower()):
+    for word in re.findall(r"\b[\w'`’]+\b", text.lower()):
         word_count[word] += 1
     return dict(word_count)
 
@@ -29,7 +29,8 @@ with open("input.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
 # Split text into words
-words = re.findall(r'\b\w+\b', text.lower())
+words = re.findall(r"\b[\w'`’]+\b", text.lower())
+
 
 # Count the number of , words and characters
 word_count = len(words)
