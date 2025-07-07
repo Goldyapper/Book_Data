@@ -1,5 +1,6 @@
 from collections import defaultdict
 import re
+import matplotlib.pyplot as plt
 
 Stopwords = {
     "a", "an", "the", "and", "or", "but", "if", "while", "with", "without", "to", "of", "in", "on", "at",
@@ -45,15 +46,16 @@ word_counts = count_words_in_file()
 # count the number of sentences
 sentence_count = len(re.findall(r'[.!?]', text))
 
-sorted_word_counts = sorted(word_counts.items(), key=lambda item: item[1],reverse=True)
-top_20_words = sorted(sorted_word_counts[:20], key=lambda item: item[1])
+word_counts_desc = sorted(word_counts.items(), key=lambda item: item[1],reverse=True)
+top_20_words_desc = sorted(word_counts_desc[:20])
+top_20_asc = sorted(top_20_words_desc, key=lambda item: item[1])  
 
 filtered_counts = filter_stopwords(word_counts)
 top_10_filtered = sorted(filtered_counts.items(), key=lambda item: item[1], reverse=True)[:10]
 top_nonstop_asc = sorted(top_10_filtered, key=lambda item: item[1])
 
 print("Top 20 words:")
-for word, count in top_20_words:
+for word, count in top_20_asc:
     print(f"{word}: {count}")
 
 print("Top 10 non-stop words:")
@@ -64,3 +66,15 @@ print(f"Total number of paragraphs: {paragraph_count}")
 print(f"Total number of sentences: {sentence_count}")
 print(f"Total number of words: {word_count}")
 print(f"Total number of characters: {character_count}")
+
+sorted_words = sorted(word_counts.items(), key=lambda item: item[1], reverse=True) [:50]
+# Separate words and counts
+words, counts = zip(*sorted_words)
+
+plt.figure(figsize=(20, 10))
+plt.barh(words, counts, color='blue')
+plt.xlabel('Frequency')
+plt.title('All Words by Frequency')
+plt.gca().invert_yaxis()  # Highest frequency on top
+plt.tight_layout()
+plt.show()
