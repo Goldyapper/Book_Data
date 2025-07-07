@@ -50,14 +50,14 @@ top_20_words = sorted(sorted_word_counts[:20], key=lambda item: item[1])
 
 filtered_counts = filter_stopwords(word_counts)
 top_10_filtered = sorted(filtered_counts.items(), key=lambda item: item[1], reverse=True)[:10]
-
+top_nonstop_asc = sorted(top_10_filtered, key=lambda item: item[1])
 
 print("Top 20 words:")
 for word, count in top_20_words:
     print(f"{word}: {count}")
 
 print("Top 10 non-stop words:")
-for word, count in top_10_filtered:
+for word, count in top_nonstop_asc:
     print(f"{word}: {count}")
 
 print(f"Total number of paragraphs: {paragraph_count}")
