@@ -71,10 +71,10 @@ sorted_words = sorted(word_counts.items(), key=lambda item: item[1], reverse=Tru
 # Separate words and counts
 words, counts = zip(*sorted_words)
 
-plt.figure(figsize=(20, 10))
-plt.barh(words, counts, color='blue')
+plt.figure(figsize=(16, 8))
+plt.bar(words, counts, color='blue')
 plt.xlabel('Frequency')
 plt.title('All Words by Frequency')
-plt.gca().invert_yaxis()  # Highest frequency on top
+plt.xticks(rotation=90)  
 plt.tight_layout()
 plt.show()
